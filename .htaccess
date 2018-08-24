@@ -1,0 +1,79 @@
+RewriteEngine On
+
+## ErrorDocument 404 http:/page-not-found/
+
+##RewriteCond %{HTTPS} !=on
+##RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+##RewriteCond %{HTTP_HOST} ^ennavidad.com [NC]
+##RewriteRule ^(.*)$ https://www.ennavidad.com/$1 [R=301,L]
+
+
+## PAGES/INDEX.PHP GET_RULES ##
+
+	##PAGES##
+	RewriteRule ^page/([a-z]+)/$ page/?pagina=$1 [NC]
+	RewriteRule ^page/([a-z]+)$ page/?pagina=$1 [NC]
+
+	##Categorias
+	RewriteRule ^page/coleccion/([0-9]+)/([A-z0-9-]+)/$ page/?pagina=coleccion&id_categoria=$1&categoria=$2 [NC]
+	RewriteRule ^page/coleccion/([0-9]+)/([A-z0-9-]+)$ page/?pagina=coleccion&id_categoria=$1&categoria=$2 [NC]
+
+	##Ofertas
+	RewriteRule ^page/coleccion/ofertas/$ page/?pagina=coleccion&special=oferta [NC]
+	RewriteRule ^page/coleccion/ofertas$ page/?pagina=coleccion&special=oferta [NC]
+
+	##Productos
+	RewriteRule ^page/coleccion/([0-9]+)/([A-z0-9-]+)/([0-9]+)/([A-z0-9-]+)/$ page/?pagina=coleccion&id_categoria=$1&categoria=$2&id_producto=$3&producto=$4 [NC]
+	RewriteRule ^page/coleccion/([0-9]+)/([A-z0-9-]+)/([0-9]+)/([A-z0-9-]+)$ page/?pagina=coleccion&id_categoria=$1&categoria=$2&id_producto=$3&producto=$4 [NC]
+
+	##Caja
+	RewriteRule ^page/caja/([a-z]+)/([A-z_]+)/$ page/?pagina=caja&result=$1&msn=$2 [NC]
+	RewriteRule ^page/caja/([a-z]+)/([A-z_]+)$ page/?pagina=caja&result=$1&msn=$2 [NC]
+
+	##Pagos
+	RewriteRule ^page/caja/([a-z]+)/([A-z_]+)/$ page/?pagina=caja&result=$1&msn=$2 [NC]
+	RewriteRule ^page/caja/([a-z]+)/([A-z_]+)$ page/?pagina=caja&result=$1&msn=$2 [NC]
+
+
+	##Politicas
+	RewriteRule ^page/politicas/([a-z-]+)/$ page/?pagina=politicas&politica=$1 [NC]
+	RewriteRule ^page/politicas/([a-z-]+)$ page/?pagina=politicas&politica=$1 [NC]
+
+	##empresa
+	RewriteRule ^page/empresa/([a-z-]+)/$ page/?pagina=empresa&empresa=$1 [NC]
+	RewriteRule ^page/empresa/([a-z-]+)$ page/?pagina=empresa&empresa=$1 [NC]
+
+	##usuarios	
+	RewriteRule ^page/usuarios/([a-z-]+)/$ page/?pagina=usuarios&usuario=$1 [NC]
+	RewriteRule ^page/usuarios/([a-z-]+)$ page/?pagina=usuarios&usuario=$1 [NC]
+
+	RewriteRule ^page/usuarios/([a-z-]+)/([a-z]+)/([A-z_]+)/$ page/?pagina=usuarios&usuario=$1&result=$2&msn=$3 [NC]
+	RewriteRule ^page/usuarios/([a-z-]+)/([a-z]+)/([A-z_]+)$ page/?pagina=usuarios&usuario=$1&result=$2&msn=$3[NC]
+
+
+	RewriteRule ^page/usuarios/([a-z-]+)/([a-z]+)/([A-z_]+)/$ page/?pagina=usuarios&usuario=$1&result=$2&msn=$3 [NC]
+	RewriteRule ^page/usuarios/([a-z-]+)/([a-z]+)/([A-z_]+)$ page/?pagina=usuarios&usuario=$1&result=$2&msn=$3 [NC]
+
+	RewriteRule ^page/usuarios/([a-z-]+)/([A-z_]+)/$ page/?pagina=usuarios&usuario=$1&error=$2 [NC]
+	RewriteRule ^page/usuarios/([a-z-]+)/([A-z_]+)$ page/?pagina=usuarios&usuario=$1&error=$2 [NC]
+
+	RewriteRule ^page/usuarios/registrarse/([a-z_]+)/([A-z_]+)/(.*)/$ page/?pagina=usuarios&usuario=registrarse&result=$1&msn=$2&mail=$3 [NC]
+	RewriteRule ^page/usuarios/registrarse/([a-z_]+)/([A-z_]+)/(.*)$  page/?pagina=usuarios&usuario=registrarse&result=$1&msn=$2&mail=$3 [NC]
+
+## EXPIRES CACHING ##
+<IfModule mod_expires.c>
+ExpiresActive On
+ExpiresByType image/jpg "access 1 second"
+ExpiresByType image/jpeg "access 1 second"
+ExpiresByType image/gif "access 1 second"
+ExpiresByType image/png "access 1 second"
+ExpiresByType text/css "access 1 second"
+ExpiresByType text/html "access 1 second"
+ExpiresByType application/pdf "access 1 second"
+ExpiresByType text/x-javascript "access 1 second"
+ExpiresByType application/x-shockwave-flash "access 1 second"
+ExpiresByType image/x-icon "access 1 second"
+ExpiresDefault "access plus 1 second"
+</IfModule>
+## EXPIRES CACHING ##
